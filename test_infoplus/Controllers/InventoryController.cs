@@ -43,9 +43,9 @@ namespace test_infoplus.Controllers
                 _inventoryService.UpdateInventory(inventory);
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return NotFound(ex.Message);
+                return StatusCode(500);
             }
         }
         [HttpDelete]
@@ -56,9 +56,9 @@ namespace test_infoplus.Controllers
                 _inventoryService.DeleteInventory(id);
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return NotFound(ex.Message);
+                return StatusCode(500);
             }
         }
     }

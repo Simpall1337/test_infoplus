@@ -48,9 +48,9 @@ namespace test_infoplus.Controllers
                 _storeService.UpdateStores(store);
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return NotFound(ex.Message);
+                return StatusCode(500);
             }
         }
         [HttpDelete]
@@ -61,9 +61,9 @@ namespace test_infoplus.Controllers
                 _storeService.DeleteStores(id);
                 return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return NotFound(ex.Message);
+                return StatusCode(500);
             }
         }
 
