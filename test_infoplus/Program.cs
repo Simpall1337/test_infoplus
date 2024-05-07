@@ -22,6 +22,20 @@ builder.Services.AddScoped<IStoresRepository, StoresRepository>()
                 .AddScoped<IEquipmentService, EquipmentService>()
                 .AddScoped<IInventoryRepository, InventoryRepository>()
                 .AddScoped<IInventoryService, InventoryService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin() // –азрешаем доступ из любых источников
+                   .AllowAnyMethod() // –азрешаем использование любых HTTP-методов
+                   .AllowAnyHeader(); // –азрешаем использование любых заголовков
+        });
+});
+
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

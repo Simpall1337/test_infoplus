@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+    justify-content: center; /* выравнивание по центру */
+}
+.item {
+    margin: 0 10px; /* пространство между элементами */
+}
